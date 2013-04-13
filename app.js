@@ -58,9 +58,8 @@ io.sockets.on('connection', function(socket){
   socket.on('player connect', function(data){
     console.log('===================');
     console.log('player connect');
-    socket.set('id', ++numOfPlayers, function(err){
-      if(err) throw err;
-    });
+    
+    ++numOfPlayers;
 
     switch(numOfPlayers){
       case 1 :
@@ -367,6 +366,9 @@ io.sockets.on('connection', function(socket){
     console.log('Server restart');
     numOfPlayers = 0;
     numReadyPlayers = 0;
+    color = null;
+    turn = null;
+    name = null;
     console.log('===================');
   });
 
