@@ -2,6 +2,25 @@ extends layout
 
 block content
   #wrapper
+
+    #Dash
+      img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
+      hr
+      p= 'TURN : '
+        br
+        span#turn= 'General Aladeen'
+      hr
+      h3#btlmsg= 'BATTLE MESSAGES'
+      form#chat
+        input#msg(type='text',placeholder='Enter message. . .')
+        input.btn(type='submit',value='Submit &#187;')
+      hr
+      #messages
+        ul
+          li
+            span.author= 'Arbiter'
+            =' : Welcome to Game of the Generals - Online'
+
     #board
 
       ul
@@ -165,23 +184,7 @@ block content
 
       #cover
     #guide
-    #Dash
-      img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
-      hr
-      p= 'TURN : '
-        br
-        span#turn= 'General Aladeen'
-      hr
-      h3#btlmsg= 'BATTLE MESSAGES'
-      form#chat
-        input#msg(type='text',placeholder='Enter message. . .')
-        input.btn(type='submit',value='Submit &#187;')
-      hr
-      #messages
-        ul
-          li
-            span.author= 'Arbiter'
-            =' : Welcome to Game of the Generals - Online'
+
 
     form#name
       img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
