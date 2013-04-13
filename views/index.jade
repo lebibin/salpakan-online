@@ -1,0 +1,206 @@
+extends layout
+
+block content
+  #wrapper
+    #board
+
+      ul
+        li#A8
+        li#B8
+        li#C8
+        li#D8
+        li#E8
+        li#F8
+        li#G8
+        li#H8
+        li#I8
+
+      ul
+        li#A7
+        li#B7
+        li#C7
+        li#D7
+        li#E7
+        li#F7
+        li#G7
+        li#H7
+        li#I7
+
+      ul
+        li#A6
+        li#B6
+        li#C6
+        li#D6
+        li#E6
+        li#F6
+        li#G6
+        li#H6
+        li#I6
+
+      ul
+        li#A5
+        li#B5
+        li#C5
+        li#D5
+        li#E5
+        li#F5
+        li#G5
+        li#H5
+        li#I5
+
+      ul
+        li#A4
+        li#B4
+        li#C4
+        li#D4
+        li#E4
+        li#F4
+        li#G4
+        li#H4
+        li#I4
+
+      ul
+        li#A3
+        li#B3
+        li#C3
+        li#D3
+        li#E3
+        li#F3
+        li#G3
+        li#H3
+        li#I3
+
+      ul
+        li#A2
+        li#B2
+        li#C2
+        li#D2
+        li#E2
+        li#F2
+        li#G2
+        li#H2
+        li#I2
+
+      ul
+        li#A1
+        li#B1
+        li#C1
+        li#D1
+        li#E1
+        li#F1
+        li#G1
+        li#H1
+        li#I1
+    #pieces
+          ul
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/five-star.png',alt='Five-star General')
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/four-star.png',alt='Four-star General')
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/three-star.png',alt='Three-star General')
+
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/two-star.png',alt='Two-star General')
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/one-star.png',alt='One-star General')
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/col.png',alt='Colonel')
+
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/lt-col.png',alt='Lt. Colonel')
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/major.png',alt='Major')
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/capt.png',alt='Captain')
+
+            li
+              span.piece(title='Eliminates any lower ranking officer, the private, and the flag.')
+                img(src='/images/pieces/1st-lieut.png',alt='1st Lieutenant')
+            li
+              span.piece(title='Eliminates the sergeant, the private, and the flag.')
+                img(src='/images/pieces/2nd-lieut.png',alt='2nd Lieutenant')
+            li
+              span.piece(title='Eliminates the private, and the flag.')
+                img(src='/images/pieces/sarg.png',alt='Sergeant')
+
+            li
+              span.piece(title='Eliminates the spy, and the flag.')
+                img(src='/images/pieces/priv.png',alt='Private')
+            li
+              span.piece(title='Eliminates the spy, and the flag.')
+                img(src='/images/pieces/priv.png',alt='Private')
+            li
+              span.piece(title='Eliminates the spy, and the flag.')
+                img(src='/images/pieces/priv.png',alt='Private')
+            li
+              span.piece(title='Eliminates the spy, and the flag.')
+                img(src='/images/pieces/priv.png',alt='Private')
+            li
+              span.piece(title='Eliminates the spy, and the flag.')
+                img(src='/images/pieces/priv.png',alt='Private')
+            li
+              span.piece(title='Eliminates the spy, and the flag.')
+                img(src='/images/pieces/priv.png',alt='Private')
+
+            li
+              span.piece(title='Eliminates all officers from the rank of Sergeant up to 5-Star General & the flag.')
+                img(src='/images/pieces/spy.png',alt='Spy')
+            li
+              span.piece(title='Eliminates all officers from the rank of Sergeant up to 5-Star General & the flag.')
+                img(src='/images/pieces/spy.png',alt='Spy')
+
+            li
+              span.piece(title='Eliminates the flag.')
+                img(src='/images/pieces/flag.png',alt='Flag')
+
+      #cover
+    #guide
+    #Dash
+      img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
+      hr
+      p= 'TURN : '
+        br
+        span#turn= 'General Aladeen'
+      hr
+      h3#btlmsg= 'BATTLE MESSAGES'
+      form#chat
+        input#msg(type='text',placeholder='Enter message. . .')
+        input.btn(type='submit',value='Submit &#187;')
+      hr
+      #messages
+        ul
+          li
+            span.author= 'Arbiter'
+            =' : Welcome to Game of the Generals - Online'
+
+    form#name
+      img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
+      hr
+      h2= 'Welcome, General?'
+      div
+        input#playerName(placeholder='Enter your name. . .',name='Player')
+      hr
+      input.btn(type='submit',value='Play &#187;')
+
+    #progress
+      img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
+      hr
+      img#prog(src='/images/ajax-loader.gif',alt='Game of the Generals Online - AJAX loader gif')
+      hr
+      h2= 'Waiting for the other player.'
+  script(src='/socket.io/socket.io.js')
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  script
+    window.jQuery || document.write('<script src="javascripts/vendor/jquery.js"><\\/script>')
+
+  script(src='javascripts/app.js')
