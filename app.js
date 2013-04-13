@@ -36,7 +36,7 @@ server.listen(app.get('port'), function(){
 });
 
 //server side using socket.io
-io = require('socket.io').listen(server);
+var io = require('socket.io').listen(server);
 io.set('log level',1);
 // assuming io is the Socket.IO server object
 io.configure(function () { 
@@ -51,6 +51,8 @@ var numReadyPlayers = 0;
 var color = null;
 var turn = null;
 var name = null;
+var p1 = null;
+var p2 = null;
 
 io.sockets.on('connection', function(socket){
   socket.emit('initial connect');
@@ -58,7 +60,7 @@ io.sockets.on('connection', function(socket){
   socket.on('player connect', function(data){
     console.log('===================');
     console.log('player connect');
-    
+
     ++numOfPlayers;
 
     switch(numOfPlayers){
@@ -272,9 +274,9 @@ io.sockets.on('connection', function(socket){
     if(cr === 'Flag' && ce === 'Flag') {
         winnerPiece = cr;
         winnerName = crName;
-        e
         loserPiece = ce;
-        loserName = ceName;nd = true;
+        loserName = ceName;
+        end = true;
     } else if (cr === 'Flag'){
         winnerPiece = ce;
         winnerName = ceName;
@@ -311,14 +313,14 @@ io.sockets.on('connection', function(socket){
     if(!tie && ce === winnerPiece){
     socket.broadcast.emit('add message', {
         author : 'Arbiter',
-        message : 'General ' + loserName + ', you lost your ' + loserPiece + ' in" the "Challenge"!'
+        message : 'General ' + loserName + ', you lost your [' + loserPiece + '] in the "Challenge"!'
       });
     }
 
     if(end){
       io.sockets.emit('add message', {
         author : 'Arbiter',
-        message : 'General ' + winnerName + ' has won the Game!"!'
+        message : 'General ' + winnerName + ' has won the Game!'
       });
     }
 
@@ -369,13 +371,15 @@ io.sockets.on('connection', function(socket){
     color = null;
     turn = null;
     name = null;
+    p1 = null;
+    p2 = null;
     console.log('===================');
   });
 
   socket.on('reconnect', function(){
     console.log('=== socket on : reconnect');
     console.log('Client reconnected');
-    ++numOfPlayers;
+
   });
     console.log('===================');
 });

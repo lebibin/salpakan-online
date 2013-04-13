@@ -4,7 +4,7 @@ block content
   #wrapper
 
     #Dash
-      img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
+      img#logo(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
       hr
       p= 'TURN : '
         br
@@ -19,7 +19,13 @@ block content
         ul
           li
             span.author= 'Arbiter'
-            =' : Welcome to Game of the Generals - Online'
+            =' : Isn\'t that awesome? Enough chitchat, let\'s play!'
+          li
+            span.author= 'Arbiter'
+            =' : Did you know? This is the first ever Online Real-Time 1v1 GoG port of its kind!'
+          li
+            span.author= 'Arbiter'
+            =' : Hey there! Welcome to Game of the Generals Online'
 
     #board
 
@@ -198,7 +204,7 @@ block content
     #progress
       img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
       hr
-      img#prog(src='/images/ajax-loader.gif',alt='Game of the Generals Online - AJAX loader gif')
+      #prog
       hr
       h2= 'Waiting for the other player.'
   script(src='/socket.io/socket.io.js')
