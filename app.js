@@ -55,7 +55,23 @@ var p1 = null;
 var p2 = null;
 
 io.sockets.on('connection', function(socket){
-  socket.emit('initial connect');
+    console.log('===================');
+    console.log('connection');
+    console.log('current number of players : ' + numOfPlayers);
+
+  if(numOfPlayers>=2) {
+    socket.emit('add message', {
+      author : 'Arbiter',
+      message : 'How I wish to see you play! Unfortunately, the Game Server is Full.'
+    });
+    socket.emit('add message', {
+      author : 'Arbiter',
+      message : 'Come back again later, okay?'
+    });
+    socket.emit('full');
+  } else {
+    socket.emit('initial connect');
+  }
 
   socket.on('player connect', function(data){
     console.log('===================');
@@ -245,9 +261,9 @@ io.sockets.on('connection', function(socket){
       if(ce === 'Spy' || ce === 'Flag'){
         winnerPiece = cr;
         winnerName = crName;
-    
-    loserPiece = ce;
-    loserName = ceName;  } else {
+        loserPiece = ce;
+        loserName = ceName;
+      } else {
         winnerPiece = ce;
         winnerName = ceName;
         loserPiece = cr;
@@ -277,11 +293,15 @@ io.sockets.on('connection', function(socket){
         loserPiece = ce;
         loserName = ceName;
         end = true;
-    } else if (cr === 'Flag'){
+    }
+    if (cr === 'Flag'){
         winnerPiece = ce;
         winnerName = ceName;
         loserPiece = cr;
         loserName = crName;
+        end = true;
+    }
+    if (ce === 'Flag'){
         end = true;
     }
     console.log('Challenger['+crName +']['+cr+'] vs Challengee['+ceName +']['+ce+']');

@@ -7,7 +7,7 @@
 
 
 (function() {
-  var $chat, $cover, $dash, $guide, $msg, $msgBox, $turnName, activePiece, activePos, add_message, bind_piece_listeners, blackCells, board, challenge, change_dash_bg, change_turn, change_turn_name, check_turn, colLabels, color, game_start, get_player_name, id, initialize, move_piece, name, pause, piece_click, piecesToSet, place_piece, progress, reset_all_colors, reset_allowed_colors, reset_lmove_color, resume, set_challenge_winner, show_allowed_positions, show_winner, square_click, state, test_challenge, turn, turnCount, unbind_cell_listeners, unbind_piece_listeners, war_start, whiteCells;
+  var $chat, $cover, $dash, $guide, $msg, $msgBox, $turnName, activePiece, activePos, add_message, bind_piece_listeners, blackCells, board, challenge, change_dash_bg, change_turn, change_turn_name, check_turn, colLabels, color, game_start, get_player_name, id, initialize, move_piece, name, pause, piece_click, piecesToSet, place_piece, progress, reset_all_colors, reset_allowed_colors, reset_lmove_color, resume, set_challenge_winner, show_allowed_positions, show_full, show_winner, square_click, state, test_challenge, turn, turnCount, unbind_cell_listeners, unbind_piece_listeners, war_start, whiteCells;
 
   board = $('#board');
 
@@ -437,6 +437,13 @@
     return $(result).appendTo($cover);
   };
 
+  show_full = function() {
+    var full;
+    full = "<div id='result'>\n    <img src='/images/GG_logo.png' alt='Game of the Generals Online' title='Game of the Generals Online' />\n    <hr />\n    <h1>Sorry the Server is FULL!</h1>\n    <hr />\n    <h2>Please try again later.</h2>\n</div>";
+    $cover.fadeIn();
+    return $(full).appendTo($cover);
+  };
+
   window.socket = io.connect();
 
   socket.on('initial connect', function() {
@@ -496,6 +503,12 @@
   socket.on('add message', function(data) {
     console.log('add message');
     return add_message(data);
+  });
+
+  socket.on('full', function() {
+    console.log('full');
+    show_full();
+    return socket.disconnect();
   });
 
 }).call(this);
