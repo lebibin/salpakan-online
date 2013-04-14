@@ -46,6 +46,7 @@ io.configure(function () {
 
 
 // keep track of num of players
+var numConnected = 0;
 var numOfPlayers = 0;
 var numReadyPlayers = 0;
 var color = null;
@@ -58,6 +59,10 @@ io.sockets.on('connection', function(socket){
     console.log('===================');
     console.log('connection');
     console.log('current number of players : ' + numOfPlayers);
+
+    io.sockets.emit('show num online', {
+      numOnline : ++numConnected
+    });
 
   if(numOfPlayers>=2) {
     socket.emit('add message', {
@@ -376,10 +381,13 @@ io.sockets.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('=== socket on : disconnect');
     console.log('Client disconnect');
-    // io.sockets.emit('add message', {
+    // io.sockets.emit('client disconnect', {
     //   author : 'Arbiter',
     //   message : 'A Player has left the game'
     // });
+    io.sockets.emit('show num online', {
+      numOnline : --numConnected
+    });
     console.log('===================');
   });
 
@@ -388,6 +396,7 @@ io.sockets.on('connection', function(socket){
     console.log('Server restart');
     numOfPlayers = 0;
     numReadyPlayers = 0;
+    numConnected = 0;
     color = null;
     turn = null;
     name = null;
