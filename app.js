@@ -331,14 +331,14 @@ io.sockets.on('connection', function(socket){
     if(!tie && cr === winnerPiece){
     socket.emit('add message', {
         author : 'Arbiter',
-        message : 'General ' + loserName + ', you lost your Piece[' + loserPiece + '] in the "Challenge"!'
+        message : 'General ' + loserName + ', you lost your "' + loserPiece + '" in the "Challenge"!'
       });
     }
 
     if(!tie && ce === winnerPiece){
     socket.broadcast.emit('add message', {
         author : 'Arbiter',
-        message : 'General ' + loserName + ', you lost your [' + loserPiece + '] in the "Challenge"!'
+        message : 'General ' + loserName + ', you lost your "' + loserPiece + '" in the "Challenge"!'
       });
     }
 
