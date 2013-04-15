@@ -8,16 +8,11 @@ block content
       p
         span#online= '0'
         =' Player/s online'
-      hr
       p= 'TURN : '
         br
         span#turn= 'General'
-      hr
       h3#btlmsg= 'BATTLE MESSAGES'
-      form#chat
-        input#msg(type='text',placeholder='Enter message. . .')
-        input.btn(type='submit',value='Submit &#187;')
-      hr
+
       #messages
         ul
           li
@@ -41,6 +36,10 @@ block content
           li
             span.author= 'Arbiter'
             =' : Hey there! Welcome to Game of the Generals Online.' 
+            
+      form#chat
+        input#msg(type='text',placeholder='Enter message. . .')
+        input.btn(type='submit',value='Submit &#187;')
 
     #board
 
