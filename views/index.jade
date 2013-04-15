@@ -11,6 +11,7 @@ block content
       p= 'TURN : '
         br
         span#turn= 'General'
+
       h3#btlmsg= 'BATTLE MESSAGES'
 
       #messages
@@ -36,7 +37,7 @@ block content
           li
             span.author= 'Arbiter'
             =' : Hey there! Welcome to Game of the Generals Online.' 
-            
+
       form#chat
         input#msg(type='text',placeholder='Enter message. . .')
         input.btn(type='submit',value='Submit &#187;')
@@ -223,8 +224,8 @@ block content
       h2= 'Waiting for the other player.'
   
   script(src='/socket.io/socket.io.js')
-  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-  script
-    window.jQuery || document.write('<script src="javascripts/vendor/jquery.js"><\\/script>')
+  //- script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  script(src='javascripts/vendor/jquery.js')
+    //- window.jQuery || document.write('<script src="javascripts/vendor/jquery.js"><\\/script>')
 
   script(src='javascripts/main.js')
