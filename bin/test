@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+./node_modules/mocha/bin/mocha  -c --ui bdd --reporter spec test/_helper.js test/apps/arbiter-test.coffee
+
