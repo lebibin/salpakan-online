@@ -30,8 +30,9 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/restart', routes.restart);
 
-var server = http.createServer(app);
-server.listen(app.get('port'), function(){
+module.exports = app;
+
+var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
