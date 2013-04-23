@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node server"
   },
   "dependencies": {
     "express": "3.1.0",
     "jade": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "coffee-script": "~1.6.2"
   },
   "engines": {
     "node": "0.10.x",
