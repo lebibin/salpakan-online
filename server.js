@@ -6,7 +6,6 @@
                     require('coffee-script');
 
 var express       = require('express')
-  , routes        = require('./routes')
   , http          = require('http')
   , mongoose      = require('mongoose');
 
@@ -22,8 +21,7 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 models.user = require('./models/user')(mongoose).model;
 
 // ROUTES
-app.get('/', routes.index);
-app.get('/restart', routes.restart);
+require('./apps/game/routes')(app);
 require('./apps/authentication/routes')(app, models.user);
 
 // SOCKET.IO STUFF
