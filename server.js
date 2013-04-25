@@ -10,7 +10,7 @@ var express       = require('express')
   , mongoose      = require('mongoose');
 
 var app           = express()
-  , config        = require('./apps/config')(app, express, mongoose)
+  , config        = require('./apps/config.coffee')(app, express, mongoose)
   , models        = {};
 
 var server = http.createServer(app).listen(app.get('port'), function(){
