@@ -1,4 +1,4 @@
-extends layout
+extends /../../views/layout
 
 block content
   #wrapper
@@ -19,22 +19,17 @@ block content
         ul
           li
             span.author= 'Arbiter'
-            =' : Interested in strategies? Read the '
+            =' : If you\'re new and you need help, here\'s a '
+              a(href='http://en.wikipedia.org/wiki/Game_of_the_Generals#Objective', target='_blank')= 'brief Introduction'
+            =' and the '
               a(href='https://dl.dropbox.com/u/82438269/How%20to%20Win%20with%20Game%20of%20the%20Generals%5Bclearer%5D.pdf', target='_blank')= 'Salpakan Instruction Booklet'
             ='.'
-
           li
             span.author= 'Arbiter'
-            =' : If you\'re new and you need help, here\'s a '
-              a(href='http://en.wikipedia.org/wiki/Game_of_the_Generals#Objective', target='_blank')= 'brief Tutorial'
-            ='.'
-
+            =' : To start, Ask the Password from your Friend, or Enter your own and Invite someone using this password.'
           li
             span.author= 'Arbiter'
-            =' : Isn\'t that awesome? Enough chitchat, let\'s play!'
-          li
-            span.author= 'Arbiter'
-            =' : Did you know? This is the first ever Online Browser-based Real-Time 1v1 Port of Game of the Generals!'
+            =' : Did you know? This is the first ever Online Browser-based Real-Time Multiplayer Game of the Generals!'
           li
             span.author= 'Arbiter'
             =' : Hey there! Welcome to Game of the Generals Online.' 
@@ -207,7 +202,6 @@ block content
       #cover
     #guide
 
-
     form#name
       img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
       hr
@@ -216,6 +210,17 @@ block content
         input#playerName(placeholder='Enter your name. . .',name='Player')
       hr
       input.btn(type='submit',value='Play &#187;')
+
+
+    form#room
+      img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')
+      hr
+      h2
+        span.hint--left(data-hint="Ask the Password from your Friend, or Enter your own and Invite someone using this password.")= 'General Lobby'
+      div
+        input#roomName(placeholder='Enter a password. . .',name='Room')
+      hr
+      input.btn(type='submit',value='Enter &#187;')
 
     #progress
       img(src='/images/GG_logo.png',alt='Game of the Generals Online',title='Game of the Generals Online')

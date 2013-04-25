@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  div(style="text-align:center;	width:600px;height:200px;position:absolute;left:50%;top:50%;margin:-100px 0 0 -300px;")
+    h1(style='font-size:3em;')= "Error " + status
+    h2(style='font-size:1.5em;')= "Not Found"
+    br
+    p= "Perhaps there was a typo?"
+    br
+    a(href='/',style='font-size:1em;color:#666; text-decoration:none;')= '&larr; Go back and PLAY'
