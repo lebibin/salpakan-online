@@ -50,7 +50,6 @@ Thumbs.db
 *.sass-cache
 
 *.scss
-*.coffee
 
 # OS or Editor folders
 .DS_Store
