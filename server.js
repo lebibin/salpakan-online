@@ -18,11 +18,11 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 });
 
 // MODELS
-models.user = require('./models/user')(mongoose).model;
+// models.user = require('./models/user')(mongoose).model;
 
 // ROUTES
 require('./apps/game/routes')(app);
-require('./apps/authentication/routes')(app, models.user);
+// require('./apps/authentication/routes')(app, models.user);
 
 // SOCKET.IO STUFF
 require('./apps/sockets')(server);
