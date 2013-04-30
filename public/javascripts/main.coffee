@@ -561,4 +561,4 @@ socket.on 'full', ->
 
 socket.on 'show num online', (data) ->
 	# console.log 'show num online'
-	$online.html data.numOnline
+	$online.html data.numOnlineMsg

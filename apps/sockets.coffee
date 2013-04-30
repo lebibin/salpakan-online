@@ -40,8 +40,12 @@ sockets = (server) ->
 		console.log 'current number of players : ' + numOfConnected
 
 		# GLOBAL - EMIT EVENT FOR SHOWING NUMBER OF ONLINE PLAYERS
+		if numOfConnected > 1
+			numOnlineMsg = "#{numOfConnected} Players Online."
+		else
+			numOnlineMsg = "#{numOfConnected} Player Online."
 		io.sockets.emit 'show num online',
-			numOnline : numOfConnected
+			numOnlineMsg : numOnlineMsg
 
 		socket.emit 'initialize room' # to get the room the player wants to join in
 
