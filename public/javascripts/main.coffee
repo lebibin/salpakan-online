@@ -420,6 +420,7 @@ show_remaining_pieces = ->
 		remaining_pieces : remaining_pieces
 
 show_winner = (data) ->
+	show_remaining_pieces()
 	tempName = data.winnerName
 	if name is data.winnerName
 		sub = "Well played, congratulations!"
@@ -531,7 +532,6 @@ socket.on 'move piece', (data) ->
 
 socket.on 'end game', (data) ->
 	# console.log 'end game'
-	show_remaining_pieces()
 	show_winner data
 
 socket.on 'show pieces', (data) ->
