@@ -191,6 +191,7 @@ sockets = (server) ->
 				end = true
 
 			if end
+				io.sockets.in(room).emit 'show remaining'
 				io.sockets.in(room).emit 'add message',
 					author : 'Arbiter'
 					message : "General #{data.crName}'s Flag has captured your base, i.e. it reached Row\##{destinationRow}."
@@ -344,6 +345,7 @@ sockets = (server) ->
 
 			# MESSAGE FOR GAME END, WHO WON?
 			if end
+				io.sockets.in(room).emit 'show remaining'
 				io.sockets.in(room).emit 'add message',
 					author : 'Arbiter'
 					message : "General #{winnerName}'s \"#{winnerPiece}\" has Captured General #{loserName}'s \"Flag\"."

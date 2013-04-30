@@ -404,7 +404,6 @@ set_challenge_winner = (data) ->
 	bind_piece_listeners()
 
 	if data.end
-		show_remaining_pieces()
 		show_winner data
 
 
@@ -533,8 +532,10 @@ socket.on 'move piece', (data) ->
 
 socket.on 'end game', (data) ->
 	# console.log 'end game'
-	show_remaining_pieces()
 	show_winner data
+
+socket.on 'show remaining', ->
+	show_remaining_pieces()
 
 socket.on 'show pieces', (data) ->
 	# console.log 'show pieces'
