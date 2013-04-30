@@ -407,7 +407,7 @@ set_challenge_winner = (data) ->
 		show_winner data
 
 
-show_remaining_piece = ->
+show_remaining_pieces = ->
 # show your pieces to opponent, since game is already over.
 	remaining_pieces = []
 	$piece = $('.piece').each ->
@@ -531,7 +531,7 @@ socket.on 'move piece', (data) ->
 
 socket.on 'end game', (data) ->
 	# console.log 'end game'
-	show_remaining_piece
+	show_remaining_pieces()
 	show_winner data
 
 socket.on 'show pieces', (data) ->
