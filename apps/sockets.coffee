@@ -196,7 +196,7 @@ sockets = (server) ->
 					message : "General #{data.crName}'s Flag has captured your base, i.e. it reached Row\##{destinationRow}."
 				io.sockets.in(room).emit 'add message',
 					author : 'Arbiter'
-					message : 'General ' + data.crName + ' has won the Game!'
+					message : 'General ' + data.crName + ' has WON the Game!'
 				io.sockets.in(room).emit 'add message',
 					author : 'Arbiter'
 					message : 'Press "F5" or "Refresh" the Page to play again! /GG'
@@ -330,17 +330,17 @@ sockets = (server) ->
 			else
 				io.sockets.in(room).emit 'add message',
 					author : 'Arbiter'
-					message : 'General ' + winnerName + ' won the "Challenge"!'
+					message : 'General ' + winnerName + ' WON the "Challenge"!'
 
 			# MESSAGE INDIVIDUAL SOCKETS WHAT PIECE HAS BEEN LOST
 			if not tie and not end and challengerPiece is winnerPiece
 				socket.emit 'add message',
 					author : 'Arbiter'
-					message : "General #{loserName}, you lost your \"#{loserPiece}\" in the Challenge!"
+					message : "General #{loserName}, you LOST your \"#{loserPiece}\" in the Challenge!"
 			if not tie and not end and challengeePiece is winnerPiece
 				socket.broadcast.to(room).emit 'add message',
 					author : 'Arbiter'
-					message : "General #{loserName}, you lost your \"#{loserPiece}\" in the Challenge!"
+					message : "General #{loserName}, you LOST your \"#{loserPiece}\" in the Challenge!"
 
 			# MESSAGE FOR GAME END, WHO WON?
 			if end
@@ -349,7 +349,7 @@ sockets = (server) ->
 					message : "General #{winnerName}'s \"#{winnerPiece}\" has Captured General #{loserName}'s \"Flag\"."
 				io.sockets.in(room).emit 'add message',
 					author : 'Arbiter'
-					message : 'General ' + winnerName + ' has won the Game!'
+					message : 'General ' + winnerName + ' has WON the Game!'
 				io.sockets.in(room).emit 'add message',
 					author : 'Arbiter'
 					message : 'Press "F5" or "Refresh" the Page to play again! /GG'
@@ -370,6 +370,13 @@ sockets = (server) ->
 
 			console.log("It is now General #{name}\'s turn.")
 			console.log('===================')
+
+		# PROCS on GAME END, show the remaining pieces to opponent
+		socket.on 'show pieces', (data) ->
+			console.log('=== socket on : show pieces')
+			socket.broadcast.to(room).emit 'show pieces',
+				remaining_pieces : data.remaining_pieces
+
 
 		# LISTEN FOR CHAT MESSAGES
 		socket.on 'add message', (data) ->

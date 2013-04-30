@@ -135,11 +135,11 @@ unbind_cell_listeners = ->
 bind_piece_listeners = ->
 	$('.piece').each ->
 		$this = $(this)
-		$thisP = $this.parent()
-		$thisP.click ->
-			pos = $thisP.attr 'id'
+		$parentLi = $this.parent()
+		$parentLi.click ->
+			pos = $parentLi.attr 'id'
 			if state is 'preparation'
-				if (pos is undefined) and (not $thisP.hasClass('occupied'))
+				if (pos is undefined) and (not $parentLi.hasClass('occupied'))
 					piece_click this
 			else if state is 'war'
 				currentRow =  pos[1]
@@ -389,17 +389,17 @@ test_challenge = (data) ->
 		color : color
 
 set_challenge_winner = (data) ->
-	destLi = $('#'+data.destCell)
+	$destLi = $('#'+data.destCell)
 	if data.tie
-		destLi.find('img[alt="'+data.winner+'"]').parent().remove()
-		destLi.removeClass 'opponent opponentMoved occupied'
+		$destLi.find('img[alt="'+data.winner+'"]').parent().remove()
+		$destLi.removeClass 'opponent opponentMoved occupied'
 	else
-		if ((destLi.find('img[alt="'+data.winner+'"]')).length) isnt 0
-			destLi.removeClass 'opponent opponentMoved'
+		if (($destLi.find('img[alt="'+data.winner+'"]')).length) isnt 0
+			$destLi.removeClass 'opponent opponentMoved'
 			play_sound 'points', false
 		else
-			destLi.find('img[alt!="'+data.winner+'"]').parent().remove()
-			destLi.removeClass 'occupied'
+			$destLi.find('img[alt!="'+data.winner+'"]').parent().remove()
+			$destLi.removeClass 'occupied'
 	unbind_cell_listeners()
 	bind_piece_listeners()
 
@@ -407,6 +407,19 @@ set_challenge_winner = (data) ->
 		show_winner data
 
 show_winner = (data) ->
+
+	# show your pieces to opponent, since game is already over.
+	remaining_pieces = []
+	$piece = $('.piece').each ->
+		$this = $(this)
+		piece =
+			cell : $this.parent().attr 'id'
+			piece : $this.parent().html()
+		remaining_pieces.push piece
+	socket.emit 'show pieces',
+		remaining_pieces : remaining_pieces
+
+
 	tempName = data.winnerName
 	if name is data.winnerName
 		sub = "Well played, congratulations!"
@@ -429,6 +442,12 @@ show_winner = (data) ->
 
 	socket.emit 'leave room',
 		room : room
+
+show_pieces =  (data) ->
+	remaining_pieces = data.remaining_pieces
+	for index of remaining_pieces
+		$('li#'+remaining_pieces[index].cell).html(remaining_pieces[index].piece)
+
 
 # FULL
 
@@ -513,6 +532,10 @@ socket.on 'move piece', (data) ->
 socket.on 'end game', (data) ->
 	# console.log 'end game'
 	show_winner data
+
+socket.on 'show pieces', (data) ->
+	# console.log 'show pieces'
+	show_pieces data
 
 socket.on 'challenge start', (data) ->
 	# console.log 'challenge start'
