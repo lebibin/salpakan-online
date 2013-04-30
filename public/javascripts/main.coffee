@@ -185,7 +185,7 @@ $dash = $('#Dash')
 $guide = $('#guide')
 change_dash_bg = (c) ->
 	if c is 'black'
-		clr = '#130f30'
+		clr = '#0D0C0B'
 	else
 		clr = '#FFFFE5'
 	$dash.css 'background-color', clr
