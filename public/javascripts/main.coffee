@@ -420,7 +420,6 @@ show_remaining_pieces = ->
 		remaining_pieces : remaining_pieces
 
 show_winner = (data) ->
-	console.log 'show_remaining_pieces() called'
 	tempName = data.winnerName
 	if name is data.winnerName
 		sub = "Well played, congratulations!"
