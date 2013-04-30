@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+var path = require('path');
+try {
+	var config = require(process.cwd() + '/nodefly.json');
+} catch (e) {
+	console.error('Could not find nodefly.json');
+}
+if (config) {
+	require('nodefly').profile(config.key, config.appname, config.options);
+	require(path.resolve(process.argv[2]));
+}
