@@ -2,11 +2,6 @@
 /**
  * Module dependencies.
  */
-					require('nodefly').profile(
-					    '87f443a0-2f10-42bf-bf3f-c124ac06d139',
-					    [process.env.APPLICATION_NAME,'Heroku']
-					);
-
                     require('coffee-script');
 
 var express       = require('express')
