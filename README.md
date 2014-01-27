@@ -25,7 +25,13 @@ The objective of the game is to eliminate or capture the flag of the opponent, o
 1. Have him/her visit the site and enter the same password
 1. Enjoy the game!
 
-### Credits
+## Team
+- [Joash Bulan](https://www.facebook.com/joeboolean) - Designer
+- [Kevin Candelaria](https://github.com/octodoodle) - Developer
+- [Ernest Dizon](https://www.facebook.com/ewheng) - Tech Writer
+- [Kenny Ladores](https://www.facebook.com/wawadwe007) - Tech Writer
+
+## Credits
 - [WebChess](https://github.com/benjaminfisher/Web-Chess)
 - [socket.io](https://github.com/LearnBoost/socket.io)
 - [node.js](https://github.com/joyent/node)
